@@ -1,0 +1,19 @@
+package com.algaworks.algasensors.temperature.processing.commom;
+
+import io.hypersistence.tsid.TSID;
+
+public class TSIDGeneratedUtil {
+    private static final TSID.Factory factory = new TSID.Factory();
+    static {
+        if(System.getenv("TSID_NODE") == null) {
+            System.setProperty("TSID_NODE", "1");
+        }
+        if(System.getenv("TSID_NODE_COUNT") == null) {
+            System.setProperty("TSID_NODE_COUNT", "1");
+        }
+    }
+
+    public static TSID generate() {
+        return factory.generate();
+    }
+}
